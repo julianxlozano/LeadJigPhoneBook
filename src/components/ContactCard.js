@@ -4,8 +4,6 @@ import React, {useState} from "react";
 
 
 const ContactCard = (props) =>{
-
-    console.log(props)
  
     const {firstname,lastname} = props
 

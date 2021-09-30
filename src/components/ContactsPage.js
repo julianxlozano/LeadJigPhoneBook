@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import ContactCard from './ContactCard';
+import NewContactForm from './NewContactForm';
 
 const ContactsPage = () =>{
     const [allContacts,setContacts] = useState([])
@@ -28,9 +29,8 @@ const ContactsPage = () =>{
                  <div className="contact-cards card text-center border-primary mb-3" style={{maxWidth: '19.5rem'}}>
                     <div className="card-body">
                          <h5 className="card-title">Let's add a new contact!</h5>
-                         <div className= "btn-group">
-                             <button className="btn btn-outline-success" >Submit</button>
-                         </div>
+                         <NewContactForm setContacts={setContacts} allContacts={allContacts}/>
+                      
                     </div>
                  </div>
                  </div>
