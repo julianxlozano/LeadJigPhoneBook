@@ -20,3 +20,11 @@ code {
   margin-top: 2em;
   margin-bottom: 2em;
 }
+
+.card-rows{
+  width:80em;
+}
+
+.btn{
+  margin:1em;
+}
