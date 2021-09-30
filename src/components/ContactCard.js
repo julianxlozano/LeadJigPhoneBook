@@ -5,7 +5,7 @@ import React, {useState} from "react";
 
 const ContactCard = (props) =>{
  
-    const {firstname,lastname} = props
+    const {firstName,Lastname} = props
 
     const getDetails = () => {
         let deets = []
@@ -20,7 +20,7 @@ const ContactCard = (props) =>{
     return(
         <div className="col align-item-center">
                   <div className="contact-cards card border-primary mb-3" style={{maxWidth: '20rem'}}>
-                      <h4 className="card-header">"{firstname + lastname}"</h4>
+                      <h4 className="card-header">"{firstName + Lastname}"</h4>
                           <div className="card-body">
                             <ul>{getDetails()}</ul>
                           </div>

@@ -4,22 +4,10 @@ import NewContactForm from './NewContactForm';
 
 const ContactsPage = () =>{
     const [allContacts,setContacts] = useState([])
-    const testGuy = {
-        firstname: "Joe",
-        lastname: "Shmoe",
-        phonenumber: "630-999-9999",
-        happy: "yes"
-    }
-
-    const testGuy2 = {
-        firstname: "Joe",
-        lastname: "Doe",
-        phonenumber: "630-999-9999",
-        happy: "no"
-    }
+   
 
     useEffect(()=>{
-        setContacts([testGuy,testGuy2])
+ 
     },[])
 
         return (
