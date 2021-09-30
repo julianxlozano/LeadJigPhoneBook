@@ -21,7 +21,7 @@ const ContactCard = (props) =>{
 
     return(
         <div className="col align-item-center">
-                  <div className="Contact-cards card border-primary mb-3" style={{maxWidth: '20rem'}}>
+                  <div className="contact-cards card border-primary mb-3" style={{maxWidth: '20rem'}}>
                       <h4 className="card-header">"{firstname + lastname}"</h4>
                           <div className="card-body">
                             <ul>{getDetails()}</ul>
