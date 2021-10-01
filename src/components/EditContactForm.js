@@ -6,16 +6,19 @@ const EditContactForm = (props) => {
     const [lastName, setLastName] = useState(null)
     const [phoneNumber,setPhoneNumber] = useState(null)
 
+ 
+
     const handleSumbit = (e) =>{
         e.preventDefault()
         const newContact = {
+            id: props.contact.id,
             firstName: firstName || props.contact.firstName,
             lastName: lastName || props.contact.lastName,
             phoneNumber: phoneNumber || props.contact.phoneNumber
         }
 
         let contactIndex = props.allContacts.findIndex(contact=> contact.id === props.contact.id)
-        console.log(contactIndex)
+
         const newContactsArray = [...props.allContacts]
         newContactsArray[contactIndex] = newContact
         props.setContacts(newContactsArray)
