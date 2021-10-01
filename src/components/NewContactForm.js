@@ -35,7 +35,7 @@ const NewContactForm = (props) => {
 
     const handleAddCustom = (e) =>{
         e.preventDefault()
-        setCustomFields([...customFields,{bday:"shis"}])
+        setCustomFields([...customFields,{}])
         
     }
 
@@ -48,7 +48,7 @@ const NewContactForm = (props) => {
                     <input onChange={e=>setLastName(e.target.value)} type="text" className="form-control" id="FormControlInput3" placeholder="Doe"></input>
                     <label for="FormControlInput1">Phone Number</label>
                     <input onChange={e=>setPhoneNumber(e.target.value)} type="text" className="form-control" id="FormControlInput4" placeholder="(xxx)xxx-xxxx"></input>
-                    {customFields.length > 0 ? customFields.map(field=><CustomInput/>) : null}
+                    {customFields.length > 0 ? customFields.map(field=><CustomInput key={uuid()} newField={field} setCustomFields={setCustomFields}/>) : null}
                 </div>
                 <div className="btn-group">
                 <input type="submit" className="btn btn-success email-btn" id="FormControlInput5" ></input>
