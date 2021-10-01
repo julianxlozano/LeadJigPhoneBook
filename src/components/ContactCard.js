@@ -44,7 +44,7 @@ const ContactCard = (props) =>{
                                     Edit
                                 </button>
                                 <button className="btn btn-danger" >
-                                    Delete
+                                    View History
                                 </button>
                             </div>
                     </div>
