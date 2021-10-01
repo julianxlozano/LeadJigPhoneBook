@@ -17,7 +17,7 @@ const NewContactForm = (props) => {
 
     const handleSumbit = (e) =>{
         e.preventDefault()
-        console.log('shis')
+       
        const newContact = {
              id: uuid(),
              firstName: firstName,

@@ -6,9 +6,6 @@ const ContactsPage = () =>{
     const [allContacts,setContacts] = useState([])
    
 
-    useEffect(()=>{
- 
-    },[])
 
         return (
             <div className="all-contact-cards container col d-flex justify-content-center">
@@ -22,7 +19,7 @@ const ContactsPage = () =>{
                     </div>
                  </div>
                  </div>
-                  {allContacts.map(contact=><ContactCard contact={contact} setContacts={setContacts} allContacts={allContacts}/>)}
+                  {allContacts.map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)}
                 </div>
            
          </div>

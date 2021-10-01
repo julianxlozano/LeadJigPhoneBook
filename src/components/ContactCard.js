@@ -11,9 +11,11 @@ const ContactCard = (props) =>{
 
     const getDetails = () => {
         let deets = []
+        let keyNum = 0
         for (const deet in props.contact){
             if (deet === 'id') continue;
-            deets.push(<li>{`${deet}: ${props.contact[deet]}`}</li>)
+            deets.push(<li key={keyNum}>{`${deet}: ${props.contact[deet]}`}</li>)
+            keyNum += 1
         }
         return deets
     } 

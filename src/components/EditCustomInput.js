@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 const EditCustomInput = (props) => {
 
-  //  debugger
     const [customValue,setCustomValue] = useState("");
     const [customFieldName,setCustomFieldName] = useState("Custom Field")
 
@@ -33,7 +32,6 @@ const EditCustomInput = (props) => {
         props.setCustomFields(newCustomFieldsArray)
     }
 
-//debugger
         return (
             <div>
                 

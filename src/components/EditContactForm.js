@@ -28,19 +28,16 @@ const EditContactForm = (props) => {
     }
 
     const getCustomFields = () => {
-      //  debugger
         const customFieldsToEdit = []
         for (const field in props.contact){
             if (field === 'id' || field === 'firstName' || field === 'lastName' || field === 'phoneNumber') continue;
             customFieldsToEdit.push({[field]: props.contact[field]})
         }
 
-       // debugger
         return (
-            customFieldsToEdit.map(customField=><EditCustomInput customField={customField}/>)
+            customFieldsToEdit.map(customField=><EditCustomInput key={customField.id} customField={customField}/>)
         )
     } 
-
         return (
             <form className="edit-form" onSubmit={handleSumbit}> 
                 <div className="form-group">
