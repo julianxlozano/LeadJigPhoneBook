@@ -11,22 +11,23 @@ const ContactCard = (props) =>{
 
     const getDetails = () => {
         let deets = []
-        let i = 0
         for (const deet in props.contact){
+            if (deet === 'id') continue;
             deets.push(<li>{`${deet}: ${props.contact[deet]}`}</li>)
-            i += 1
         }
         return deets
     } 
 
     if(editing){
         return(
-            <div className="contact-cards card text-center border-primary mb-3" style={{maxWidth: '19.5rem'}}>
-            <div className="card-body">
-                 <h5 className="card-title">{`Editing ${firstName} ${lastName}`}</h5>
-                                    <EditContactForm setContacts={props.setContacts} allContacts={props.allContacts} contact={props.contact}/>
-                                </div>
+            <div className="col align-item-center">
+                  <div className="contact-cards card text-center border-primary mb-3" style={{maxWidth: '20rem'}}>
+                        <div className="card-body">
+                                    <h5 className="card-title">{`Editing ${firstName} ${lastName}`}</h5>
+                                    <EditContactForm setContacts={props.setContacts} allContacts={props.allContacts} contact={props.contact} setEditing={setEditing}/>
                         </div>
+                  </div>
+            </div>
          
         )
     }else{

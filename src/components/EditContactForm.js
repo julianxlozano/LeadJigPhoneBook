@@ -14,6 +14,7 @@ const EditContactForm = (props) => {
             phoneNumber: phoneNumber
         }
         props.setContacts([...props.allContacts,newContact])
+        props.setEditing(false)
     }
 
         return (
