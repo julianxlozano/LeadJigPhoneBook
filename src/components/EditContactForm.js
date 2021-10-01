@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 
 const EditContactForm = (props) => {
 
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [phoneNumber,setPhoneNumber] = useState("")
+    const [firstName, setFirstName] = useState(null)
+    const [lastName, setLastName] = useState(null)
+    const [phoneNumber,setPhoneNumber] = useState(null)
 
     const handleSumbit = (e) =>{
         e.preventDefault()
         const newContact = {
-            firstName: firstName,
-            lastName: lastName,
-            phoneNumber: phoneNumber
+            firstName: firstName || props.contact.firstName,
+            lastName: lastName || props.contact.lastName,
+            phoneNumber: phoneNumber || props.contact.phoneNumber
         }
-        props.setContacts([...props.allContacts,newContact])
+
+        let contactIndex = props.allContacts.findIndex(contact=> contact.id === props.contact.id)
+        console.log(contactIndex)
+        const newContactsArray = [...props.allContacts]
+        newContactsArray[contactIndex] = newContact
+        props.setContacts(newContactsArray)
         props.setEditing(false)
     }
 
