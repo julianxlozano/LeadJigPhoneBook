@@ -26,7 +26,8 @@ const NewContactForm = (props) => {
          }
 
 
-         customFields.forEach(f=>Object.assign(newContact,f))
+       customFields.forEach(f=>Object.assign(newContact,f))
+       console.log(newContact)
        props.setContacts([...props.allContacts,newContact])
        setFirstName("")
        setLastName("")
@@ -36,7 +37,7 @@ const NewContactForm = (props) => {
 
     const handleAddCustom = (e) =>{
         e.preventDefault()
-        setCustomFields([...customFields,{}])
+        setCustomFields([...customFields,{id:uuid()}])
         
     }
 
