@@ -37,7 +37,7 @@ const EditContactForm = (props) => {
 
        // debugger
         return (
-            customFieldsToEdit.map(customField=><EditCustomInput/>)
+            customFieldsToEdit.map(customField=><EditCustomInput customField={customField}/>)
         )
     } 
 

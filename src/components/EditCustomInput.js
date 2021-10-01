@@ -33,11 +33,12 @@ const EditCustomInput = (props) => {
         props.setCustomFields(newCustomFieldsArray)
     }
 
-
+//debugger
         return (
             <div>
-            <label for="FormControlInput1">Cust</label>
-            <input onChange={e=>createCustomFieldValue(e.target.value)} type="text" className="form-control"  placeholder="value of custom field"></input>
+                
+            <label for="FormControlInput1">{Object.keys(props.customField)[0]}</label>
+            <input onChange={e=>createCustomFieldValue(e.target.value)} type="text" className="form-control"  placeholder="value of custom field" defaultValue={props.customField[Object.keys(props.customField)[0]]}></input>
   
             </div>
         );
