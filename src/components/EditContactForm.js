@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import EditCustomInput from './EditCustomInput';
 
 const EditContactForm = (props) => {
 
     const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
     const [phoneNumber,setPhoneNumber] = useState(null)
+    const [customFields,setCustomFields] = useState([])
 
  
 
@@ -17,13 +19,27 @@ const EditContactForm = (props) => {
             phoneNumber: phoneNumber || props.contact.phoneNumber
         }
 
-        let contactIndex = props.allContacts.findIndex(contact=> contact.id === props.contact.id)
 
+        let contactIndex = props.allContacts.findIndex(contact=> contact.id === props.contact.id)
         const newContactsArray = [...props.allContacts]
         newContactsArray[contactIndex] = newContact
         props.setContacts(newContactsArray)
         props.setEditing(false)
     }
+
+    const getCustomFields = () => {
+      //  debugger
+        const customFieldsToEdit = []
+        for (const field in props.contact){
+            if (field === 'id' || field === 'firstName' || field === 'lastName' || field === 'phoneNumber') continue;
+            customFieldsToEdit.push({[field]: props.contact[field]})
+        }
+
+       // debugger
+        return (
+            customFieldsToEdit.map(customField=><EditCustomInput/>)
+        )
+    } 
 
         return (
             <form className="edit-form" onSubmit={handleSumbit}> 
@@ -34,6 +50,7 @@ const EditContactForm = (props) => {
                     <input onChange={e=>setLastName(e.target.value)} type="text" className="form-control" id="FormControlInput3" defaultValue={props.contact.lastName}></input>
                     <label for="FormControlInput1">Phone Number</label>
                     <input onChange={e=>setPhoneNumber(e.target.value)} type="text" className="form-control" id="FormControlInput4" defaultValue={props.contact.phoneNumber}></input>
+                    {Object.keys(props.contact).length > 3 ? getCustomFields() : null}
                 </div>
                 <div className="btn-group">
                 <input type="submit" className="btn btn-success email-btn" id="FormControlInput5" ></input>

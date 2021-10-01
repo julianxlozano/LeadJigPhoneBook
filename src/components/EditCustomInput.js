@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-const CustomInput = (props) => {
+const EditCustomInput = (props) => {
 
+  //  debugger
     const [customValue,setCustomValue] = useState("");
     const [customFieldName,setCustomFieldName] = useState("Custom Field")
 
@@ -35,7 +36,7 @@ const CustomInput = (props) => {
 
         return (
             <div>
-            <input onChange={e=>createCustomFieldName(e.target.value)} type="text" className="form-control"  placeholder="name of custom field" ></input>
+            <label for="FormControlInput1">Cust</label>
             <input onChange={e=>createCustomFieldValue(e.target.value)} type="text" className="form-control"  placeholder="value of custom field"></input>
   
             </div>
@@ -44,4 +45,4 @@ const CustomInput = (props) => {
 
 }
 
-export default CustomInput;
+export default EditCustomInput;
