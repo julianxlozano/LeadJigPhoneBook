@@ -9,6 +9,7 @@ const CustomInput = (props) => {
         const newField = {
             [customFieldName]: customValue
         }
+        props.setCustomFields([...props.customFields,newField])
     }
 
         return (
