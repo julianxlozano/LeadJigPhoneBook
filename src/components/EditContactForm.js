@@ -16,13 +16,28 @@ const EditContactForm = (props) => {
       }
 
     const handleSumbit = (e) =>{
+        
         e.preventDefault()
-        const newContact = {
-            id: props.contact.id,
-            firstName: firstName || props.contact.firstName,
-            lastName: lastName || props.contact.lastName,
-            phoneNumber: phoneNumber || props.contact.phoneNumber
+        //console.log(document.getElementsByClassName('edit-fields'))
+
+        const newContact = {}
+        const allFields = e.target.children
+  
+
+        for (let i = 1; i < allFields.length; i++){
+            if (allFields[i].id === 'dynamic-input'){
+                newContact[allFields[i].name] = allFields[i].value
+            }
         }
+
+
+
+        // const newContact = {
+        //     id: props.contact.id,
+        //     firstName: firstName || props.contact.firstName,
+        //     lastName: lastName || props.contact.lastName,
+        //     phoneNumber: phoneNumber || props.contact.phoneNumber
+        // }
 
 
         let contactIndex = props.allContacts.findIndex(contact=> contact.id === props.contact.id)
@@ -38,8 +53,8 @@ const EditContactForm = (props) => {
         for (const deet in props.contact){
             if (deet === 'id') continue;
             deets.push(
-            <label for="FormControlInput1">{deet}</label>,
-            <input key={keyNum} className="form-control" defaultValue={props.contact[deet]}></input>
+            <label>{deet}</label>,
+            <input key={keyNum} className="edit-fields form-control" name={deet} id="dynamic-input"defaultValue={props.contact[deet]}></input>
             )
             keyNum += 1
         }
@@ -80,6 +95,9 @@ const EditContactForm = (props) => {
         return(
             <form className="edit-form" onSubmit={handleSumbit}>
                 {getDetails()}
+                <div className="btn-group">
+                <input type="submit" className="btn btn-success email-btn" id="FormControlInput5" ></input>
+                </div>
             </form>            
 
         )
