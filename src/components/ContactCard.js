@@ -20,7 +20,7 @@ const ContactCard = (props) =>{
             let newString = deet.replace(/([A-Z])/g, ' $1');
             let formattedDeet = newString.charAt(0).toUpperCase() + newString.slice(1);
 
-            deets.push(<li key={keyNum}>{`${formattedDeet}: ${props.contact[deet]}`}</li>)
+            deets.push(<tr><th scope="row">{formattedDeet}</th><td>{props.contact[deet]}</td></tr>)
             keyNum += 1
         }
         return deets
@@ -48,7 +48,11 @@ const ContactCard = (props) =>{
                     <div className="contact-cards card border-primary mb-3" style={{maxWidth: '20rem'}}>
                         <h4 className="card-header">"{`${firstName} ${lastName}`}"</h4>
                             <div className="card-body">
-                                <ul>{getDetails()}</ul>
+                                <table class="table">
+                                    <tbody>
+                                    {getDetails()}
+                                    </tbody>
+                                </table>
                             </div>
                             <div className= "btn-group">
                                 <button onClick={()=>setEditing(true)}className="btn btn-primary" >
