@@ -17,7 +17,10 @@ const ContactCard = (props) =>{
         let keyNum = 0
         for (const deet in props.contact){
             if (deet === 'id' || deet === 'editHistory') continue;
-            deets.push(<li key={keyNum}>{`${deet}: ${props.contact[deet]}`}</li>)
+            let newString = deet.replace(/([A-Z])/g, ' $1');
+            let formattedDeet = newString.charAt(0).toUpperCase() + newString.slice(1);
+
+            deets.push(<li key={keyNum}>{`${formattedDeet}: ${props.contact[deet]}`}</li>)
             keyNum += 1
         }
         return deets

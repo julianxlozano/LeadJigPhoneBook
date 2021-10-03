@@ -14,11 +14,15 @@ const EditHistory = (props) => {
                     if(deet === 'content'){
                         for (const field in histObj.content ){
                             if (field === 'id' || field === 'editHistory') continue;
-                            deets.push(<li key={keyNum}>{`${field}: ${histObj.content[field]}`}</li>)
+                            let newString = field.replace(/([A-Z])/g, ' $1');
+                            let formattedField = newString.charAt(0).toUpperCase() + newString.slice(1);
+                            deets.push(<li key={keyNum}>{`${formattedField}: ${histObj.content[field]}`}</li>)
                             keyNum += 1
                         }
                     }else{
-                        deets.push(<li key={keyNum}>{`${deet}: ${histObj[deet]}`}</li>)
+                        let newString = deet.replace(/([A-Z])/g, ' $1');
+                        let formattedDeet = newString.charAt(0).toUpperCase() + newString.slice(1);
+                        deets.push(<li key={keyNum}>{`${formattedDeet}: ${histObj[deet]}`}</li>)
                         keyNum += 1
                 }
             }
