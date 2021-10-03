@@ -14,7 +14,12 @@ const EditContactForm = (props) => {
     const handleSumbit = (e) =>{
         
         e.preventDefault()
-        const newContact = {}
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
+
+        const newContact = {id:props.contact.id,editHistory:props.contact.editHistory}
         const allFields = e.target.children
   
 
@@ -24,6 +29,8 @@ const EditContactForm = (props) => {
             }
         }
 
+
+        newContact['editHistory'].push({id:uuid(),timeOfEdit: dateTime,content:newContact})
         let contactIndex = props.allContacts.findIndex(contact=> contact.id === props.contact.id)
         const newContactsArray = [...props.allContacts]
         newContactsArray[contactIndex] = newContact
@@ -35,7 +42,7 @@ const EditContactForm = (props) => {
         let deets = []
         let keyNum = 0
         for (const deet in props.contact){
-            if (deet === 'id') continue;
+            if (deet === 'id' || deet === 'editHistory') continue;
 
             let newString = deet.replace(/([A-Z])/g, ' $1');
             let formattedDeet = newString.charAt(0).toUpperCase() + newString.slice(1);
