@@ -1,12 +1,8 @@
-import React, { useState,useEffect } from 'react';
+import React from 'react';
 
 
 const EditContactForm = (props) => {
 
-    const [firstName, setFirstName] = useState(null)
-    const [lastName, setLastName] = useState(null)
-    const [phoneNumber,setPhoneNumber] = useState(null)
-    const [customFields,setCustomFields] = useState([])
 
     const uuid = () => {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

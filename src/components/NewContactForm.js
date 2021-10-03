@@ -17,6 +17,11 @@ const NewContactForm = (props) => {
 
     const handleSumbit = (e) =>{
         e.preventDefault()
+
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
        
        const newContact = {
              id: uuid(),
@@ -27,7 +32,8 @@ const NewContactForm = (props) => {
 
 
        customFields.forEach(f=>Object.assign(newContact,f))
-       console.log(newContact)
+
+       newContact['editHistory'] = [{id:uuid(),timeOfEdit:dateTime,content:newContact}]
        props.setContacts([...props.allContacts,newContact])
        setFirstName("")
        setLastName("")
