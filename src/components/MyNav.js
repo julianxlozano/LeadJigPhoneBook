@@ -1,6 +1,7 @@
 import React from "react";
 
 import {Navbar, Nav} from 'react-bootstrap';
+import SearchBar from "./SearchBar";
 
 
  const MyNav = (props) =>{
