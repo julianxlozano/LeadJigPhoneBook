@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class SearchBar extends Component {
-    render() {
+const SearchBar = (props) => {
+
+
         return (
-          
-                <form className="search-bar col d-flex justify-content-center">
+                <form onSubmit={props.searchBy}className="search-bar col d-flex justify-content-center">
                 <div class="form-group">
                 </div>
                     <div class="form-group search-bar">
-                    <input type="text" className="form-control" id="staticEmail2" value="search here"></input>
+                    <input type="text" className="form-control" id="search-term-input" placeholder="search here"></input>
                     </div>
                     <div class="form-group search-bar">
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" id="select-box">
                         <option selected>Search By...</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="firstName">First Name</option>
+                        <option value="lastName">Last Name</option>
+                        <option value="phoneNumber">Phone Number</option>
                         </select>
                         </div>
                     <div class="btn-group">
@@ -24,7 +24,7 @@ class SearchBar extends Component {
                 </form>
 
         );
-    }
+ 
 }
 
 export default SearchBar;
