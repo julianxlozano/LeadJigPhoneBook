@@ -1,19 +1,22 @@
 import React, {useState} from "react";
 import EditContactForm from "./EditContactForm";
+import EditHistory from "./EditHistory";
 
 
 
 
 const ContactCard = (props) =>{
     const [editing,setEditing] = useState(false)
+    const [viewingHistory,setViewHistory] = useState(false)
     const {firstName,lastName} = props.contact
 
+    
 
     const getDetails = () => {
         let deets = []
         let keyNum = 0
         for (const deet in props.contact){
-            if (deet === 'id') continue;
+            if (deet === 'id' || deet === 'editHistory') continue;
             deets.push(<li key={keyNum}>{`${deet}: ${props.contact[deet]}`}</li>)
             keyNum += 1
         }
@@ -32,9 +35,12 @@ const ContactCard = (props) =>{
             </div>
          
         )
+ 
     }else{
 
         return(
+            <>
+            {viewingHistory ? <EditHistory setViewHistory={setViewHistory} editHistory={props.contact.editHistory}/> : null}
             <div className="col align-item-center">
                     <div className="contact-cards card border-primary mb-3" style={{maxWidth: '20rem'}}>
                         <h4 className="card-header">"{`${firstName} ${lastName}`}"</h4>
@@ -45,13 +51,14 @@ const ContactCard = (props) =>{
                                 <button onClick={()=>setEditing(true)}className="btn btn-primary" >
                                     Edit
                                 </button>
-                                <button className="btn btn-danger" >
+                                <button onClick={()=>setViewHistory(true)} className="btn btn-danger" >
                                     View History
                                 </button>
                             </div>
                     </div>
                 
             </div>
+            </>
         );
     }
     
