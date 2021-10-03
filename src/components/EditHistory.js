@@ -4,11 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const EditHistory = (props) => {
 
-    
-//debugger
-
-
-
     const getDetails = () => {
         let deets = []
         let keyNum = 0
@@ -43,7 +38,7 @@ const EditHistory = (props) => {
             </Modal.Body>
 
         <Modal.Footer>
-
+            <button onClick={()=>props.setViewHistory(false)} className="btn btn-primary">Done</button>
         </Modal.Footer>
 
       </Modal>
