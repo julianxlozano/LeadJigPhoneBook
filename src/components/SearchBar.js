@@ -20,6 +20,7 @@ const SearchBar = (props) => {
                         </div>
                     <div class="btn-group">
                         <button type="submit" class="btn btn-primary mb-2">Search</button>
+                        <button onClick={()=>props.resetSearch(false)} type="submit" class="btn btn-primary mb-2">Reset</button>
                     </div>
                 </form>
 

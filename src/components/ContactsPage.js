@@ -4,7 +4,12 @@ import NewContactForm from './NewContactForm';
 import SearchBar from './SearchBar';
 
 const ContactsPage = () =>{
+    const [filteredContacts,setFilteredContacts] = useState([])
+    const [searching, setSearching] = useState(false)
     const [allContacts,setContacts] = useState([])
+    const [searchTerm,setSearchTerm] = useState("")
+    const [searchCategory,setSearchCategory] = useState("")
+ 
 
 
     const uuid = () => {
@@ -46,23 +51,48 @@ const ContactsPage = () =>{
         ])
     },[])
 
+   
 
-    const searchBy = (e) => {
-        e.preventDefault()
-        const searchParam = document.getElementById('select-box').value
-        const searchTerm = e.target.children[1].children[0].value
-        setContacts(allContacts.filter(contact=>contact[searchParam] === searchTerm))
-      //  debugger
+
+    // const searchBy = (e) => {
+    //     e.preventDefault()
+    //     //const searchParam = document.getElementById('select-box').value
+    //     //const searchTerm = e.target.children[1].children[0].value
         
+    //     setFilteredContacts(allContacts.filter(contact=>contact[searchParam] === searchTerm))
+    //     debugger
+    //     setSearching(true)
+    // }
+
+    const resetSearch = () =>{
+        setSearching(false)
     }
    
 
 
         return (
             <div className="container">
-                   <SearchBar searchBy={searchBy}/>
+                <form className="search-bar col d-flex justify-content-center">
+                    <div class="form-group">
+                    </div>
+                        <div class="form-group search-bar">
+                        <input onChange={e=> setSearchTerm(e.target.value)} type="text" className="form-control" id="search-term-input" placeholder="search here"></input>
+                        </div>
+                        <div class="form-group search-bar">
+                        <select onChange={e=>setSearchCategory(e.target.value)} class="form-select" aria-label="Default select example" id="select-box">
+                            <option selected>Search By...</option>
+                            <option value="firstName">First Name</option>
+                            <option value="lastName">Last Name</option>
+                            <option value="phoneNumber">Phone Number</option>
+                            </select>
+                            </div>
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary mb-2">Search</button>
+                            <button type="submit" class="btn btn-primary mb-2">Reset</button>
+                        </div>
+                    </form>
+
             <div className="all-contact-cards container col d-flex justify-content-center">
-             
             <div className="card-rows row row-cols-1 row-cols-md-3 g-4">
             <div className="col align-item-center" >
                  <div className="contact-cards card text-center border-primary mb-3" style={{maxWidth: '20rem'}}>
@@ -73,7 +103,10 @@ const ContactsPage = () =>{
                     </div>
                  </div>
                  </div>
-                  {allContacts.map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)}
+                    {searchCategory === "" ? allContacts.map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)
+                    :allContacts.filter(contact=>contact[searchCategory].toLowerCase().includes(searchTerm.toLowerCase()))
+                    .map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)
+                    }
                 </div>
            
             </div>
