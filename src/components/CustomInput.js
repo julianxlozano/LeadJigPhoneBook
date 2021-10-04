@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CustomInput = (props) => {
 
     const [customValue,setCustomValue] = useState("");
     const [customFieldName,setCustomFieldName] = useState("Custom Field")
 
-    const createCustomFieldValue = (value) =>{
- 
-        setCustomValue(value)
-        console.log(value)
+    useEffect(()=>{
         const newField = {
             id: props.newField.id,
             [customFieldName]: customValue
@@ -20,11 +17,10 @@ const CustomInput = (props) => {
         const newCustomFieldsArray = [...props.customFields]
         newCustomFieldsArray[customIndex] = newField
         props.setCustomFields(newCustomFieldsArray)
-    }
 
-    const createCustomFieldName = (name) =>{
-        setCustomFieldName(name)
-        console.log(name)
+    },[customValue])
+
+    useEffect(()=>{
         const newField = {
             id: props.newField.id,
             [customFieldName]: customValue
@@ -34,16 +30,15 @@ const CustomInput = (props) => {
         const newCustomFieldsArray = [...props.customFields]
         newCustomFieldsArray[customIndex] = newField
         props.setCustomFields(newCustomFieldsArray)
-    }
 
-  
+    },[customFieldName])
 
 
         return (
             <div>
             <label >Custom</label>
-            <input onChange={e=>createCustomFieldName(e.target.value)} type="text" className="form-control"  placeholder="name of custom field" ></input>
-            <input onChange={e=>createCustomFieldValue(e.target.value)} type="text" className="form-control"  placeholder="value of custom field"></input>
+            <input onChange={e=>setCustomFieldName(e.target.value)} type="text" className="form-control"  placeholder="name of custom field" ></input>
+            <input onChange={e=>setCustomValue(e.target.value)} type="text" className="form-control"  placeholder="value of custom field"></input>
             </div>
         );
  

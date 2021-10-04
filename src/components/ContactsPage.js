@@ -4,8 +4,6 @@ import NewContactForm from './NewContactForm';
 
 
 const ContactsPage = () =>{
-    const [filteredContacts,setFilteredContacts] = useState([])
-    const [searching, setSearching] = useState(false)
     const [allContacts,setContacts] = useState([])
     const [searchTerm,setSearchTerm] = useState("")
     const [searchCategory,setSearchCategory] = useState("")
@@ -19,7 +17,7 @@ const ContactsPage = () =>{
           });
       }
 
-      //this just sets initial seed data to play with
+      //this sets initial seed data to play with
     useEffect(()=>{
         let today = new Date();
         let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();

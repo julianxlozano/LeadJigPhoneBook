@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomInput from './CustomInput';
 
 const NewContactForm = (props) => {
@@ -7,6 +7,9 @@ const NewContactForm = (props) => {
     const [lastName, setLastName] = useState("")
     const [phoneNumber,setPhoneNumber] = useState("")
     const [customFields,setCustomFields] = useState([])
+   
+
+console.log(customFields)
 
     const uuid = () => {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -14,6 +17,8 @@ const NewContactForm = (props) => {
             return v.toString(16);
           });
       }
+
+    
 
     const handleSumbit = (e) =>{
         e.preventDefault()
