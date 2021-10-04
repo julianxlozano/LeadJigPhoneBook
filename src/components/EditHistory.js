@@ -16,14 +16,14 @@ const EditHistory = (props) => {
                             if (field === 'id' || field === 'editHistory') continue;
                             let newString = field.replace(/([A-Z])/g, ' $1');
                             let formattedField = newString.charAt(0).toUpperCase() + newString.slice(1);
-                            deets.push(<tr><th scope="row">{formattedField}</th><td>{histObj.content[field]}</td></tr>)
+                            deets.push(<tr><th key={keyNum}scope="row">{formattedField}</th><td>{histObj.content[field]}</td></tr>)
                            
                             keyNum += 1
                         }
                     }else{
                         let newString = deet.replace(/([A-Z])/g, ' $1');
                         let formattedDeet = newString.charAt(0).toUpperCase() + newString.slice(1);
-                        deets.push(<tr><th scope="row">{formattedDeet}</th><td>{histObj[deet]}</td></tr>)
+                        deets.push(<tr><th key={keyNum} scope="row">{formattedDeet}</th><td>{histObj[deet]}</td></tr>)
                         keyNum += 1
                 }
             }

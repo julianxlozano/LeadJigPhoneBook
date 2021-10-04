@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import ContactCard from './ContactCard';
 import NewContactForm from './NewContactForm';
-import SearchBar from './SearchBar';
+
 
 const ContactsPage = () =>{
     const [filteredContacts,setFilteredContacts] = useState([])
@@ -19,57 +19,53 @@ const ContactsPage = () =>{
           });
       }
 
+      //this just sets initial seed data to play with
     useEffect(()=>{
-        setContacts([...allContacts,
-        { 
-            id: uuid(),
-            firstName: 'Julian',
-            lastName: 'Lozano',
-            phoneNumber: '630-917-0690',
-            editHistory:[{id:uuid(),timeOfEdit:new Date,content:{}}]
-        },
-        { id: uuid(),
-            firstName: 'Jeremy',
-            lastName: 'Emanuel',
-            phoneNumber: '333 33333',
-            editHistory:[{id:uuid(),timeOfEdit:new Date,content:{}}]},
-        { id: uuid(),
-            firstName: 'Marilyn',
-            lastName: 'Reles',
-            phoneNumber: '999 99999999',
-            editHistory:[{id:uuid(),timeOfEdit:new Date,content:{}}]},
-        { id: uuid(),
-            firstName: 'Frank',
-            lastName: 'Javier',
-            phoneNumber: '444 44444',
-            editHistory:[{id:uuid(),timeOfEdit:new Date,content:{}}]},
-            {id: uuid(),
-                firstName: 'Clemmie',
-                lastName: 'Michelle',
-                phoneNumber: '555 555 55555',
-                editHistory:[{id:uuid(),timeOfEdit:new Date,content:{}}]}
-        ])
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = date+' '+time;
+
+        const jewels =   { 
+                id: uuid(),
+                firstName: 'Julian',
+                lastName: 'Lozano',
+                phoneNumber: '630-917-0690',
+                editHistory:[{id:uuid(),timeOfEdit:dateTime,content:{}}]
+            }
+        const jerm = { id: uuid(),
+                firstName: 'Jeremy',
+                lastName: 'Emanuel',
+                phoneNumber: '333 33333',
+                editHistory:[{id:uuid(),timeOfEdit:dateTime,content:{}}]}
+        const mari = { id: uuid(),
+                firstName: 'Marilyn',
+                lastName: 'Reles',
+                phoneNumber: '999 99999999',
+                editHistory:[{id:uuid(),timeOfEdit:dateTime,content:{}}]}
+        const frank = { id: uuid(),
+                firstName: 'Frank',
+                lastName: 'Javier',
+                phoneNumber: '444 44444',
+                editHistory:[{id:uuid(),timeOfEdit:dateTime,content:{}}]}
+        const clem = {id: uuid(),
+                    firstName: 'Clemmie',
+                    lastName: 'Michelle',
+                    phoneNumber: '555 555 55555',
+                    editHistory:[{id:uuid(),timeOfEdit:dateTime,content:{}}]}
+
+            clem['editHistory']['content'] = clem
+            jewels['editHistory']['content'] = jewels
+            mari['editHistory']['content'] = mari
+            frank['editHistory']['content'] = frank
+            jerm['editHistory']['content'] = jerm
+            console.log(jerm)
+        setContacts([...allContacts,jewels,jerm,mari,frank,clem])
+
+        
     },[])
 
    
-
-
-    // const searchBy = (e) => {
-    //     e.preventDefault()
-    //     //const searchParam = document.getElementById('select-box').value
-    //     //const searchTerm = e.target.children[1].children[0].value
-        
-    //     setFilteredContacts(allContacts.filter(contact=>contact[searchParam] === searchTerm))
-    //     debugger
-    //     setSearching(true)
-    // }
-
-    const resetSearch = () =>{
-        setSearching(false)
-    }
-   
-
-
         return (
             <div className="container">
                 <form className="search-bar col d-flex justify-content-center">
