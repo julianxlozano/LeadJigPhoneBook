@@ -30,7 +30,7 @@ const ContactCard = (props) =>{
         return(
             <div className="col align-item-center">
                   <div className="contact-cards card text-center border-primary mb-3" style={{maxWidth: '20rem'}}>
-                        <div className="card-body">
+                        <div className="card-body overflow-auto">
                                     <h5 className="card-title">{`Editing ${firstName} ${lastName}`}</h5>
                                     <EditContactForm setContacts={props.setContacts} allContacts={props.allContacts} contact={props.contact} setEditing={setEditing}/>
                         </div>
@@ -47,7 +47,7 @@ const ContactCard = (props) =>{
             <div className="col align-item-center">
                     <div className="contact-cards card border-primary mb-3" style={{maxWidth: '20rem'}}>
                         <h4 className="card-header">"{`${firstName} ${lastName}`}"</h4>
-                            <div className="card-body">
+                            <div className="card-body overflow-auto">
                                 <table class="table">
                                     <tbody>
                                     {getDetails()}

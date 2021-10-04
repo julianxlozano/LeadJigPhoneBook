@@ -55,7 +55,7 @@ console.log(customFields)
 
         return (
             <form className="new-contact-form" onSubmit={handleSumbit}> 
-                <div className="form-group">
+                <div className="form-inputs form-group overflow-auto">
                     <label for="FormControlInput1">First Name</label>
                     <input onChange={e=>setFirstName(e.target.value)} type="text" className="form-control" id="FormControlInput2" placeholder="John"></input>
                     <label for="FormControlInput1">Last Name</label>

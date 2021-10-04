@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const CustomInput = (props) => {
 
     const [customValue,setCustomValue] = useState("");
-    const [customFieldName,setCustomFieldName] = useState("Custom Field")
+    const [customFieldName,setCustomFieldName] = useState("")
 
     useEffect(()=>{
         const newField = {
@@ -32,7 +32,6 @@ const CustomInput = (props) => {
         props.setCustomFields(newCustomFieldsArray)
 
     },[customFieldName])
-
 
         return (
             <div>

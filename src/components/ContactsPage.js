@@ -3,7 +3,7 @@ import ContactCard from './ContactCard';
 import NewContactForm from './NewContactForm';
 
 
-const ContactsPage = () =>{
+const ContactsPage = (props) =>{
     const [allContacts,setContacts] = useState([])
     const [searchTerm,setSearchTerm] = useState("")
     const [searchCategory,setSearchCategory] = useState("")
@@ -61,7 +61,7 @@ const ContactsPage = () =>{
         setContacts([...allContacts,jewels,jerm,mari,frank,clem])
 
         
-    },[])
+    },[props])
 
    
         return (
@@ -80,10 +80,7 @@ const ContactsPage = () =>{
                             <option value="phoneNumber">Phone Number</option>
                             </select>
                             </div>
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-primary mb-2">Search</button>
-                            <button type="submit" class="btn btn-primary mb-2">Reset</button>
-                        </div>
+                       
                     </form>
 
             <div className="all-contact-cards container col d-flex justify-content-center">
@@ -97,7 +94,7 @@ const ContactsPage = () =>{
                     </div>
                  </div>
                  </div>
-                    {searchCategory === "" ? allContacts.map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)
+                    {searchCategory === "" || searchCategory === "Search By..." ? allContacts.map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)
                     :allContacts.filter(contact=>contact[searchCategory].toLowerCase().includes(searchTerm.toLowerCase()))
                     .map(contact=><ContactCard key={contact.id} contact={contact} setContacts={setContacts} allContacts={allContacts}/>)
                     }
